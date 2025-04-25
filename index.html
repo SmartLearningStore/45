@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>পোস্ট ১</title>
+  <meta name="date" content="2025-04-25">
+  <style>
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      background: #f3f4f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-image: url('paper-texture.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      margin-top: 15mm;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .date {
+      position: absolute;
+      top: 17mm;
+      right: 20px;
+      font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: #e0f2fe;
+      font-weight: bold;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      transition: all 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .button-container button {
+      background-color: #38bdf8;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      margin: 0 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .button-container button:hover {
+      background-color: #0288d1;
+      transform: scale(1.1);
+    }
+
+    .comment-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .comment-section textarea {
+      width: 80%;
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      resize: vertical;
+    }
+
+    .comment-section button {
+      margin-top: 10px;
+      background-color: #38bdf8;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .comment-section button:hover {
+      background-color: #0288d1;
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.2rem;
+      color: #38bdf8;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .button-container button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+
+      .comment-section textarea {
+        width: 90%;
+      }
+
+      .comment-section button {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+
+      .date {
+        top: 10mm;
+        font-size: 1rem;
+      }
+
+      .image-container img {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="date">2025-04-25</div>
+  <header>
+    <h1>আমার প্রথম দিন</h1>
+  </header>
+
+  <div class="image-container">
+    <img src="ss.jpg" alt="Screenshot">
+  </div>
+
+  <p>আজ আমি গিটহাবে আমার জীবনের প্রথম দিন লিখলাম। খুব সুন্দর লাগছে! সবকিছু মিলিয়ে দারুণ একটা দিন কাটিয়েছি। জীবনের এই নতুন যাত্রা আমাকে অনেক কিছু শিখাচ্ছে। গিটহাবে কাজ করার আনন্দটা অদ্ভুত।</p>
+
+  <div class="button-container">
+    <button onclick="window.location.href='index.html'">হোম</button>
+    <button onclick="sharePost()">শেয়ার</button>
+  </div>
+
+  <div class="comment-section">
+    <h2>আপনার মন্তব্য দিন</h2>
+    <textarea id="user-comment" placeholder="আপনার মন্তব্য লিখুন..."></textarea><br>
+    <button onclick="sendComment()">পাঠান</button>
+  </div>
+
+  <footer>
+    DK Dhuvo
+  </footer>
+
+  <script>
+    function sendComment() {
+      var comment = document.getElementById('user-comment').value;
+      var title = document.querySelector('h1').textContent;
+
+      // টেলিগ্রাম বটের মাধ্যমে মন্তব্য পাঠানোর জন্য কোড
+      var telegramBotUrl = "https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage";
+      var chatId = "YOUR_CHAT_ID";
+      var message = encodeURIComponent(`পোস্ট শিরোনাম: ${title}\nমন্তব্য: ${comment}`);
+      
+      var url = `${telegramBotUrl}?chat_id=${chatId}&text=${message}`;
+
+      fetch(url, { method: "GET" })
+        .then(response => {
+          if (response.ok) {
+            alert("আপনার মন্তব্য পাঠানো হয়েছে!");
+            document.getElementById('user-comment').value = ''; // Clear the textarea
+          } else {
+            alert("মন্তব্য পাঠাতে সমস্যা হয়েছে।");
+          }
+        })
+        .catch(error => {
+          alert("মন্তব্য পাঠাতে সমস্যা হয়েছে।");
+        });
+    }
+
+    function sharePost() {
+      if (navigator.share) {
+        navigator.share({
+          title: document.querySelector('h1').textContent,
+          text: document.querySelector('p').textContent,
+          url: window.location.href
+        }).then(() => {
+          console.log('Post shared successfully!');
+        }).catch((error) => {
+          console.error('Error sharing the post:', error);
+        });
+      } else {
+        alert('এই ব্রাউজারে শেয়ার অপশন সমর্থিত নয়।');
+      }
+    }
+  </script>
+</body>
+  </html>
